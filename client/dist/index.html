@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Space work</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+.page {
+  margin: auto;
+  max-width: 1320px;
+}
+
+.header {
+  margin: 48px 0;
+}
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.content {
+  flex: 0 0 872px;
+}
+
+.sidebar {
+  flex: 0 0 448px;
+  padding-left: 24px;
+}
+
+#contact-service {
+  height: 100%;
+}
+
+#contact-service > .column-container {
+  width: auto;
+  height: 100%;
+}
+</style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div id="workspace-header"></div>
+    </div>
+    <div class="main">
+      <div class="content">
+        <div id="workspaces"></div>
+        <div id="workspace-description"></div>
+        <div id="reviews"></div>
+        <div id="nearby"></div>
+      </div>
+      <div class="sidebar">
+        <div id="contact-service"></div>
+      </div>
+    </div>
+  </div>
+  <script src="https://kit.fontawesome.com/bb32e62705.js" crossorigin="anonymous"></script>
+  <script src="http://localhost:6060/workspace-description.js"></script>
+  <script src="http://localhost:4000/workspaces.js"></script>
+  <script src="http://localhost:3001/main.js"></script>
+  <script src="http://localhost:5001/nearby.js"></script>
+  <script src="http://localhost:5002/reviews.js"></script>
+</body>
+</html>
+
