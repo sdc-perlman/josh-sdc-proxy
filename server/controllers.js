@@ -2,7 +2,7 @@ const request = require('request');
 
 const createJsonController = endpoint => async (req, res) => {
 
-  const lastChar = enpdoint.slice(-1);
+  const lastChar = endpoint.slice(-1);
   if (lastChar !== '/') {
     endpoint = endpoint + '/';
   }
@@ -59,7 +59,7 @@ module.exports = {
   address,
   availability,
   description,
-  nearybyBuildings,
+  nearbyBuildings,
   photos,
   photosByWorkspace,
   reviews,
