@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const request = require('request');
-const get = require('./contollers.js');
+const get = require('./controllers.js');
 
 const app = express();
 
