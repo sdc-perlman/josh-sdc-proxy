@@ -1,59 +1,30 @@
 const path = require('path');
 const express = require('express');
 const request = require('request');
+const get = require('./contollers.js');
 
 const app = express();
 
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
 app.use('/buildings/:workspaceId', express.static(path.join(__dirname, '../client/dist')));
 
-app.get('/api/availability', async (req, res) => {
-  const { id } = req.query;
-  const options = {
-    'method': 'GET',
-    'uri': `http://localhost:3001/api/availability?id=${id}`,
-  };
-  request(options, (error, res2, body) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-      return error;
-    }
-    res.json(JSON.parse(body));
-  });
-});
+// Benny
+app.get('/workspace-api/workspace/:id', get.workspace);
 
-app.get('/workspace-api/workspace/:id', async (req, res) => {
-  const { id } = req.params;
-  const options = {
-    'method': 'GET',
-    'uri': `http://localhost:4000/workspace-api/workspace/${id}`,
-  };
-  request(options, (error, res2, body) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-      return error;
-    }
-    res.json(JSON.parse(body));
-  });
-});
+// Josh
+app.get('/api/workspace-description/:id', get.description);
+app.get('/api/photos/:id', get.photos);
+app.get('/api/photos/workspace/:id', get.photosByWorkspace);
 
-app.get('/api/workspace-description/:id', async (req, res) => {
-  const { id } = req.params;
-  const options = {
-    'method': 'GET',
-    'uri': `http://localhost:6060/api/workspace-description/${id}`,
-  };
-  request(options, (error, res2, body) => {
-    if (error) {
-      console.log(error);
-      res.sendStatus(500);
-      return error;
-    }
-    res.json(JSON.parse(body));
-  });
-});
+// Chris
+app.get('/api/availability', get.availability);
+app.get('/api/getNearbyTransitOptions/:id', get.transit);
+
+// Emmanuel
+app.get('/api/nearbyworkspaces/buildings/:id', get.nearbyBuildings);
+app.get('/api/nearbyworkspaces/address/:id', get.address);
+app.get('/api/reviews/all/:id', get.reviews);
+app.get('/api/reviews/info/:id', get.reviewInfo);
 
 // Port 6000 is insecure for chrome, otherwise I would use 6000
 const port = process.env.PORT ? process.env.PORT : 6002;
@@ -61,3 +32,4 @@ const port = process.env.PORT ? process.env.PORT : 6002;
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
+

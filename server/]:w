@@ -1,0 +1,108 @@
+const request = require('request');
+
+const availability = async (req, res) => {
+  const { id } = req.query;
+  const options = {
+    'method': 'GET',
+    'uri': `http://3.140.156.174:3001/api/availability/?id=${id}`,
+  };
+  request(options, (error, res2, body) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+      return error;
+    }
+    res.json(JSON.parse(body));
+  });
+};
+
+const description = async (req, res) => {
+  const { id } = req.params;
+  const options = {
+    'method': 'GET',
+    'uri': `http://54.151.43.93:6060/api/workspace-description/${id}`,
+  };
+  request(options, (error, res2, body) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+      return error;
+    }
+    res.json(JSON.parse(body));
+  });
+};
+
+const photos = async (req, res) => {
+  const { id } = req.params;
+  const options = {
+    'method': 'GET',
+    'uri': `http://54.151.43.93:6001/api/photos/${id}`,
+  };
+  request(options, (error, res2, body) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+      return error;
+    }
+    res.json(JSON.parse(body));
+  });
+};
+
+const photosByWorkspace = async (req, res) => {
+  const { id } = req.params;
+  const options = {
+    'method': 'GET',
+    'uri': `http://54.151.43.93:6001/api/photos/workspace/${id}`,
+  };
+  request(options, (error, res2, body) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+      return error;
+    }
+    res.json(JSON.parse(body));
+  });
+};
+
+const transit = async (req, res) => {
+  const { id } = req.params;
+  const options = {
+    'method': 'GET',
+    'uri': `http://54.193.132.156/api/getNearbyTransitOptions/${id}`,
+  };
+  request(options, (error, res2, body) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+      return error;
+    }
+    res.json(JSON.parse(body));
+  });
+};
+
+const workspace = async (req, res) => {
+  const { id } = req.params;
+  const options = {
+    'method': 'GET',
+    'uri': `http://54.193.132.156:4000/workspace-api/workspace/${id}`,
+  };
+  request(options, (error, res2, body) => {
+    if (error) {
+      console.log(error);
+      res.sendStatus(500);
+      return error;
+    }
+    res.json(JSON.parse(body));
+  });
+};
+
+module.exports = {
+  address,
+  availability,
+  description,
+  photos,
+  photosByWorkspace,
+  transit,
+  workspace,
+};
+
