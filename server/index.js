@@ -10,6 +10,7 @@ app.use('/buildings/:workspaceId', express.static(path.join(__dirname, '../clien
 
 // Benny
 app.get('/workspace-api/workspace/:id', get.workspace);
+app.get('/amenities-api/amenity/:id', get.amenities);
 
 // Josh
 app.get('/api/workspace-description/:id', get.description);
