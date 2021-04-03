@@ -1,4 +1,6 @@
 const request = require('request');
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '../', '.env')});
 
 const createJsonController = endpoint => async (req, res) => {
 
@@ -22,17 +24,13 @@ const createJsonController = endpoint => async (req, res) => {
   });
 };
 
-// Benny
-const workspace = createJsonController('http://54.193.132.156:4000/workspace-api/workspace');
-const amenities = createJsonController('http://54.219.57.231:4002/amenities-api/amenity');
-
-// Chris
-// Can't use createJsonController because this uses req.query
+const workspace = createJsonController(process.env.WORKSPACE);
+const amenities = createJsonController(process.env.AMENITIES);
 const availability = async (req, res) => {
   const { id } = req.query;
   const options = {
     'method': 'GET',
-    'uri': `http://3.140.156.174:3001/api/availability/?id=${id}`,
+    'uri': `${process.env.AVAILABILITY}/?id=${id}`,
   };
   request(options, (error, res2, body) => {
     if (error) {
@@ -43,18 +41,14 @@ const availability = async (req, res) => {
     res.json(JSON.parse(body));
   });
 };
-const transit = createJsonController('http://3.140.156.174:3002/api/getNearbyTransitOptions');
-
-// Emmanuel
-const address = createJsonController('http://ec2-54-177-170-134.us-west-1.compute.amazonaws.com:5001/api/nearbyworkspaces/address');
-const nearbyBuildings = createJsonController('http://ec2-54-177-170-134.us-west-1.compute.amazonaws.com:5001/api/nearbyworkspaces/buildings');
-const reviews = createJsonController('http://ec2-184-169-176-177.us-west-1.compute.amazonaws.com/api/reviews/info');
-const reviewInfo = createJsonController('http://ec2-184-169-176-177.us-west-1.compute.amazonaws.com/api/reviews/all');
-
-// Josh
-const description = createJsonController('http://54.151.43.93:6060/api/workspace-description');
-const photos = createJsonController('http://54.151.43.93:6001/api/photos');
-const photosByWorkspace = createJsonController('http://54.151.43.93:6001/api/photos/workspace');
+const transit = createJsonController(process.env.TRANSIT);
+const address = createJsonController(process.env.ADDRESS);
+const nearbyBuildings = createJsonController(process.env.NEARBY_BUILDINGS);
+const reviews = createJsonController(process.env.REVIEWS);
+const reviewInfo = createJsonController(process.env.REVIEW_INFO);
+const description = createJsonController(process.env.DESCRIPTION);
+const photos = createJsonController(process.env.PHOTOS);
+const photosByWorkspace = createJsonController(process.env.PHOTOS_BY_WORKSPACE);
 
 module.exports = {
   address,

@@ -1,6 +1,7 @@
 # Environment files
 *.swp
 .DS_Store
+.log
 
 # Npm
 node_modules
