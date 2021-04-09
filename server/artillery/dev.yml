@@ -1,5 +1,5 @@
 config:
-  target: 'http://localhost:3002'
+  target: 'http://localhost:6002'
   phases:
     - duration: 10
       arrivalRate: 1000
@@ -12,4 +12,4 @@ scenarios:
   - name: "Load nearby transit options"
     flow:
       - get:
-          url: "/buildings/{{ id }}"
+          url: "/api/getNearbyTransitOptions/{{ id }}"

@@ -6,7 +6,7 @@
   "scripts": {
     "server": "node server/index.js",
     "server:dev": "nodemon server/index.js",
-    "stress-test:prod": "artillery run ./server/artillery/dev.yml"
+    "stress-test:dev": "artillery run ./server/artillery/dev.yml"
   },
   "repository": {
     "type": "git",
