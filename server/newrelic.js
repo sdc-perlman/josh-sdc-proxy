@@ -1,6 +1,7 @@
 'use strict'
-const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '../', '.env')});
+import path from 'path';
+import dotenv from 'dotenv';
+dotenv.config({ path: path.join(__dirname, '../', '.env')});
 
 /**
  * New Relic agent configuration.
@@ -8,7 +9,7 @@ require('dotenv').config({ path: path.join(__dirname, '../', '.env')});
  * See lib/config/default.js in the agent distribution for a more complete
  * description of configuration variables and their potential values.
  */
-exports.config = {
+export default config = {
   /**
    * Array of application names.
    */

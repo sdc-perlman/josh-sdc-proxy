@@ -1,14 +1,13 @@
-const request = require('request');
-const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '../', '.env')});
+import request from 'request';
+import path from 'path';
+import dotenv from 'dotenv';
+dotenv.config({ path: path.join(__dirname, '../', '.env')});
 
 const createJsonController = endpoint => async (req, res) => {
-
   const lastChar = endpoint.slice(-1);
   if (lastChar !== '/') {
     endpoint = endpoint + '/';
   }
-
   const { id } = req.params;
   const options = {
     'method': 'GET',
@@ -26,6 +25,15 @@ const createJsonController = endpoint => async (req, res) => {
 
 const workspace = createJsonController(process.env.WORKSPACE);
 const amenities = createJsonController(process.env.AMENITIES);
+const transit = createJsonController(process.env.TRANSIT);
+const address = createJsonController(process.env.ADDRESS);
+const nearbyBuildings = createJsonController(process.env.NEARBY_BUILDINGS);
+const reviews = createJsonController(process.env.REVIEWS);
+const reviewInfo = createJsonController(process.env.REVIEW_INFO);
+const description = createJsonController(process.env.DESCRIPTION);
+const photos = createJsonController(process.env.PHOTOS);
+const photosByWorkspace = createJsonController(process.env.PHOTOS_BY_WORKSPACE);
+
 const availability = async (req, res) => {
   const { id } = req.query;
   const options = {
@@ -41,16 +49,8 @@ const availability = async (req, res) => {
     res.json(JSON.parse(body));
   });
 };
-const transit = createJsonController(process.env.TRANSIT);
-const address = createJsonController(process.env.ADDRESS);
-const nearbyBuildings = createJsonController(process.env.NEARBY_BUILDINGS);
-const reviews = createJsonController(process.env.REVIEWS);
-const reviewInfo = createJsonController(process.env.REVIEW_INFO);
-const description = createJsonController(process.env.DESCRIPTION);
-const photos = createJsonController(process.env.PHOTOS);
-const photosByWorkspace = createJsonController(process.env.PHOTOS_BY_WORKSPACE);
 
-module.exports = {
+export default {
   address,
   amenities,
   availability,

@@ -1,0 +1,15 @@
+config:
+  target: 'http://3.140.211.227:6002'
+  phases:
+    - duration: 10
+      arrivalRate: 1000
+      name: "1000 RPS"
+  payload:
+    path: "ids.csv"
+    fields:
+      - "id"
+scenarios:
+  - name: "Load nearby transit options"
+    flow:
+      - get:
+          url: "/api/getNearbyTransitOptions/{{ id }}"

@@ -4,9 +4,11 @@
   "description": "> This proxy loads all services on a single page.",
   "main": "index.js",
   "scripts": {
-    "server": "node server/index.js",
-    "server:dev": "nodemon server/index.js",
-    "stress-test:dev": "artillery run ./server/artillery/dev.yml"
+    "build": "webpack --config webpack.server.js --mode=production",
+    "server": "node server-build/index.js",
+    "server:dev": "nodemon server-build/index.js",
+    "stress-test:dev": "artillery run ./server/artillery/dev.yml",
+    "stress-test:prod": "artillery run ./server/artillery/prod.yml"
   },
   "repository": {
     "type": "git",
@@ -19,12 +21,29 @@
   },
   "homepage": "https://github.com/space-work/workspace-description-service-proxy#readme",
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-transform-runtime": "^7.13.15",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "dotenv-webpack": "^6.0.0",
+    "webpack": "^5.19.0",
+    "webpack-cli": "^4.4.0",
+    "webpack-node-externals": "^2.5.2"
   },
   "dependencies": {
+    "@babel/runtime": "^7.13.10",
+    "@fortawesome/fontawesome-free": "^5.15.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mapbox-gl": "^2.0.1",
     "newrelic": "^7.2.1",
-    "request": "^2.88.2"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "request": "^2.88.2",
+    "styled-components": "^5.2.1"
   }
 }

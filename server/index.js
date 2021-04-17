@@ -1,13 +1,14 @@
-const nr = require('newrelic');
-const path = require('path');
-const express = require('express');
-const request = require('request');
-const get = require('./controllers.js');
+//import nr from 'newrelic'
+import path from 'path';
+import express from 'express';
+import request from 'request';
+import get from './controllers.js';
+import ssr from './ssr.js';
 
 const app = express();
 
-app.use('/', express.static(path.join(__dirname, '../client/dist')));
-app.use('/buildings/:workspaceId', express.static(path.join(__dirname, '../client/dist')));
+app.get('/', ssr);
+app.get('/buildings/:workspaceId', ssr);
 
 app.get('/workspace-api/workspace/:id', get.workspace);
 app.get('/amenities-api/amenity/:id', get.amenities);
@@ -27,4 +28,3 @@ const port = process.env.PORT ? process.env.PORT : 6002;
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
-
