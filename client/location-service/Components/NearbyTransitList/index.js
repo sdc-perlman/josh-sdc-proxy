@@ -1,7 +1,7 @@
 import React from 'react';
 import NearbyTransit from '../NearbyTransit';
 import { faTrain, faBus, faBicycle, faRoad } from '@fortawesome/free-solid-svg-icons';
-import { Wrapper, List } from './styles'
+import { Wrapper, List } from './styles.js'
 
 const NearbyTransitList = ({nearbyTransits}) => {
 

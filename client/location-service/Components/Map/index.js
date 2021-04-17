@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import mapboxgl from 'mapbox-gl';
-import { Wrapper } from './styles';
+import { Wrapper } from './styles.js';
 
 const Map = ({locationData}) => {
 
@@ -11,10 +11,10 @@ const Map = ({locationData}) => {
 
     mapboxgl.accessToken = process.env.KEY;
     const map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/christulin/ckkvmm2w448sw17nv9a3cwuqm',
-    center: coordinates,
-    zoom: 11
+      container: 'map',
+      style: 'mapbox://styles/christulin/ckkvmm2w448sw17nv9a3cwuqm',
+      center: coordinates,
+      zoom: 11
     });
 
     const el = document.createElement('div');

@@ -1,9 +1,10 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Item,
-         Image,
-         Description
-        } from './styles';
+import {
+  Item,
+  Image,
+  Description
+} from './styles.js';
 
 const NearbyTransit = ({option, type}) => (
   <Item>
