@@ -30,6 +30,7 @@ const ssr = async (req, res) => {
       }
 
       html = html.replace('<div id="location-service"></div>', `<div id="location-service">${app}</div>`);
+      html = html.replace('<script id="location-service-initial-data"></script>', `<script>window.initialTransitOptions = ${JSON.stringify(transitOptions)}</script>`);
       html = html.replace('<style id="location-service-style"></style>', styles);
       return res.send(html);
     });
