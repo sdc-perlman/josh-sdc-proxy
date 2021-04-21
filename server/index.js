@@ -8,7 +8,7 @@ import ssr from './ssr.js';
 
 const app = express();
 
-app.use('/', express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/buildings/:id', ssr);
 app.get('/workspace-api/workspace/:id', get.workspace);
