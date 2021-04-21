@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Map from './Map';
 import NearbyTransitList from './NearbyTransitList';
 
-const App = () => {
+// Providing initial state as a prop is an antipattern
+// But this is very useful for SSR
+const App = ({ initialTransitOptions = [] }) => {
   const [locationData, updateLocationData] = useState({"origin":{"rawAddress":"4011 S Central Ave, Los Angeles, CA 90011, USA","coordinates":[34.0105442,-118.2569161],"formattedAddress":"4011 S Central Ave, Los Angeles, CA 90011, USA","streetName":"South Central Avenue","streetNumber":"4011","neighborhood":"South Los Angeles","city":"Los Angeles","state":"CA","country":"United States","countryCode":"US","zipcode":"90011","_id":"604997d783f12ac5bbc6a059","geometry":{"type":"Point","coordinates":[-118.2569161,34.0105442],"_id":"604997d783f12ac5bbc6a05a"},"workspaceId":1,"workspaceSlug":"waistcoat-shabby","workspace":"6016623df463365dd660f3bb","__v":0}});
 
-  const [nearbyTransits, updateNearbyTransits] = useState([]);
+  const [nearbyTransits, updateNearbyTransits] = useState(initialTransitOptions);
   const { origin } = locationData;
   const { streetName, streetNumber, city, state, zip } = origin;
 
@@ -25,14 +27,16 @@ const App = () => {
     //    console.error(err);
     //  });
 
-    fetch(`/api/getNearbyTransitOptions/${id}`)
-      .then(data => {
-        return data.json();
-      })
-      .then(json => {
-        const options = json.nearbyTransitOptions;
-        updateNearbyTransits(options);
-      });
+    if (initialTransitOptions.length === 0) {
+      fetch(`/api/getNearbyTransitOptions/${id}`)
+        .then(data => {
+          return data.json();
+        })
+        .then(json => {
+          const options = json.nearbyTransitOptions;
+          updateNearbyTransits(options);
+        });
+    }
 
   }, []);
 

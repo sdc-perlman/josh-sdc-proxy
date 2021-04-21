@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <link href="https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css" rel="stylesheet" />
-<style id="ssr"></style>
+<style id="location-service-style"></style>
 <style>
 html {
   box-sizing: border-box;
@@ -55,7 +55,7 @@ html {
   <div id="nav"></div>
   <div class="page">
     <div class="header">
-      <div id="workspace-header"></div>
+      <!-- <div id="workspace-header"></div> -->
       <!-- <div id="layout-header-address"></div> -->
     </div>
     <div class="main">
@@ -72,15 +72,14 @@ html {
       </div>
     </div>
   </div>
-  <div id="footer"></div>
+  <!-- <div id="footer"></div> -->
 
   <script src="https://kit.fontawesome.com/bb32e62705.js" crossorigin="anonymous"></script>
-
-  <script src="https://spacework-bundles.s3-us-west-1.amazonaws.com/nav.js"></script>
-  <script src="https://spacework-bundles.s3-us-west-1.amazonaws.com/layout.js"></script>
-  <script src="https://rpt25-photos-service.s3-us-west-1.amazonaws.com/js/location-service-ssr.js"></script>
+  <script src="https://rpt25-photos-service.s3-us-west-1.amazonaws.com/js/location-service-ssr.js.gz"></script>
 
   <!--
+  <script src="https://spacework-bundles.s3-us-west-1.amazonaws.com/nav.js"></script>
+  <script src="https://spacework-bundles.s3-us-west-1.amazonaws.com/layout.js"></script>
   <script src="https://rpt25-photos-service.s3-us-west-1.amazonaws.com/js/workspace-description.js"></script>
   <script src="https://rpt25-photos-service.s3-us-west-1.amazonaws.com/js/photos-slider.js"></script>
   <script src="https://fec-contact-service.s3.us-east-2.amazonaws.com/main.js"></script>

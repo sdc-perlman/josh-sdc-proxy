@@ -2,14 +2,15 @@
 import path from 'path';
 import express from 'express';
 import request from 'request';
+
 import get from './controllers.js';
 import ssr from './ssr.js';
 
 const app = express();
 
-app.get('/', ssr);
-app.get('/buildings/:workspaceId', ssr);
+app.use('/', express.static(path.join(__dirname, 'public')));
 
+app.get('/buildings/:id', ssr);
 app.get('/workspace-api/workspace/:id', get.workspace);
 app.get('/amenities-api/amenity/:id', get.amenities);
 app.get('/api/workspace-description/:id', get.description);
