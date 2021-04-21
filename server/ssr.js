@@ -23,6 +23,7 @@ const ssr = async (req, res) => {
     const app = ReactDOMServer.renderToString(sheet.collectStyles(<LocationApp initialTransitOptions={transitOptions} />));
     const styles = sheet.getStyleTags();
     const indexFile = path.resolve('./public/index.html');
+
     fs.readFile(indexFile, 'utf8', (err, html) => {
       if (err) {
         console.error('Something went wrong:', err);

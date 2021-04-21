@@ -1,4 +1,4 @@
-//import nr from 'newrelic'
+import nr from 'newrelic'
 import path from 'path';
 import express from 'express';
 import request from 'request';

@@ -1,6 +1,7 @@
 'use strict'
-import path from 'path';
-import dotenv from 'dotenv';
+const path = require('path');
+const dotenv = require('dotenv');
+
 dotenv.config({ path: path.join(__dirname, '../', '.env')});
 
 /**
@@ -9,7 +10,7 @@ dotenv.config({ path: path.join(__dirname, '../', '.env')});
  * See lib/config/default.js in the agent distribution for a more complete
  * description of configuration variables and their potential values.
  */
-export default config = {
+module.exports.config = {
   /**
    * Array of application names.
    */
@@ -70,4 +71,4 @@ export default config = {
       'response.headers.x*'
     ]
   }
-}
+};
